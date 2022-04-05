@@ -1,0 +1,20 @@
+#{
+#        debug
+#}
+
+*.my.domain, my.domain {
+        tls /etc/caddy/my.domain.crt /etc/caddy/my.domain.crt.key
+
+        @unifi host unifi.my.domain
+        handle @unifi {
+                reverse_proxy https://10.0.0.1 {
+                        transport http {
+                                # unifi has selfsigned default certs, ignore any security issues (caddy fails to verify it)
+                                tls_insecure_skip_verify
+                        }
+                }
+        }
+        handle {
+                respond "Nothing to see here... move along!"
+        }
+}

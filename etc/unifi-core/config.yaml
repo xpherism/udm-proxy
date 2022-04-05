@@ -1,0 +1,3 @@
+# override file for podman exec -it unifi-os cat /usr/share/unifi-core/app/config/config.yaml
+# diable http->https redirect otherwise we end with endless redirect from caddy
+enforceHttps: false
