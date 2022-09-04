@@ -19,7 +19,7 @@ Follow the steps below to get going
 
     `$ ln -sf /mnt/data/proxy/on_boot.d/30-proxy.sh /mnt/data/proxy/.`
 
-4. Run boot script (to create update network and create CNI configuration for container)
+4. Run boot script (to create/update network and create CNI configuration for container)
 
     `$ /mnt/data/on_boot.d/30-proxy.sh`
 
@@ -31,7 +31,7 @@ Follow the steps below to get going
 
 6. Run boot script again and we are done :-)
 
-Remember to change the `etc/caddy/Caddyfile` to your requirements and add mounts additional mounts to podman run if needed.<br>
+Remember to change the `etc/caddy/Caddyfile` to your requirements and add additional mounts to podman run if needed.<br>
 The default caddefile proxies unifi.my.domain to 10.0.0.1 (ie. unifi controller)
 If you keep the proxy settings for the unifi controller, then you need do following first to avoid redirect recursion
 
