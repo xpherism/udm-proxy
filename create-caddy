@@ -1,0 +1,13 @@
+#!/bin/sh
+
+CONTAINER=proxy
+
+if podman container exists ${CONTAINER}; then
+  echo "Removing existing container: ${CONTAINER}"
+  podman stop ${CONTAINER}
+  podman rm ${CONTAINER}
+fi
+
+podman run -d --systemd=false --network proxy --name ${CONTAINER} \
+-v "/mnt/data/proxy/Caddyfile:/etc/proxy/Caddyfile" \
+xpherism:udm-proxy

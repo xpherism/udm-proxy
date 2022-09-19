@@ -1,0 +1,17 @@
+#!/bin/sh
+
+CONTAINER=proxy
+
+if podman container exists ${CONTAINER}; then
+  echo "Removing existing container: ${CONTAINER}"
+  podman stop ${CONTAINER}
+  podman rm ${CONTAINER}
+fi
+
+
+podman run --systemd=false --network=proxy --name ${CONTAINER} --sysctl net.ipv4.ip_unprivileged_port_start=0 \
+-v "/mnt/data/proxy/etc/traefik/traefik.yml:/etc/traefik/traefik.yml:ro" \
+-v "/mnt/data/proxy/etc/traefik/acme.json:/etc/traefik/acme.json" \
+-v "/mnt/data/proxy/etc/traefik/dynamic:/etc/traefik/dynamic:ro" \
+--env-file="/mnt/data/proxy/etc/proxy.env" \
+traefik

@@ -1,7 +1,7 @@
 FROM caddy:builder-alpine AS builder
 
 RUN xcaddy build \
-    --with github.com/mastercactapus/caddy2-proxyprotocol
+    --with github.com/rocketreferrals/caddy-go-proxyproto
 
 FROM caddy:alpine
 

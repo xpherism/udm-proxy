@@ -1,0 +1,16 @@
+#!/bin/sh
+
+CONTAINER=proxy
+
+if podman container exists ${CONTAINER}; then
+  echo "Removing existing container: ${CONTAINER}"
+  podman stop ${CONTAINER}
+  podman rm ${CONTAINER}
+fi
+
+
+podman run --systemd=false --network=proxy --name ${CONTAINER} --sysctl net.ipv4.ip_unprivileged_port_start=0 \
+-v "/mnt/data/proxy/etc/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro" \
+-v "/mnt/data/proxy/my.domain.pem:/etc/ssl/my.domain.pem:ro" \
+--env-file="/mnt/data/proxy/etc/proxy.env" \
+haproxy:alpine

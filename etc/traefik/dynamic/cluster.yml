@@ -1,0 +1,19 @@
+tcp:
+  routers:
+    cluster-router:
+      entryPoints:
+        - websecure
+      rule: "HostSNIRegexp(`cluster.my.domain`, `{subdomain:[a-z_\\-]+}.cluster.my.domain`)"
+      service: "cluster-proxy"
+      tls:
+        options: default
+        # certResolver: production
+        passThrough: true
+
+  services:
+    cluster-proxy:
+      loadBalancer:
+        servers:
+          - address: "10.0.3.5:443"
+        proxyProtocol:
+          version: 2

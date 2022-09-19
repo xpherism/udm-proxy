@@ -1,0 +1,46 @@
+global:
+  checkNewVersion: true
+  sendAnonymousUsage: false
+
+accessLog: {}
+
+log:
+#  level: DEBUG
+  format: json
+
+api:
+  dashboard: true
+  debug: true
+  insecure: true
+
+entryPoints:
+  websecure:
+    address: ":443"
+
+providers:
+  file:
+    directory: /etc/traefik/dynamic/
+    watch: true
+
+tls:
+  options:
+    default:
+      sniStrict: true
+      minVersion: VersionTLS13
+
+# for more information, see https://doc.traefik.io/traefik/https/acme/
+# certificatesResolvers:
+#   staging:
+#     acme:
+#       email: your-email@my.domain
+#       storage: /etc/traefik/acme.json
+#       caserver: "https://acme-staging-v02.api.letsencrypt.org/directory"
+#       dnsChallenge:
+#         provider: simply
+#   production:
+#     acme:
+#       email: your-email@my.domain
+#       storage: /etc/traefik/acme.json
+#       caserver: "https://acme-v02.api.letsencrypt.org/directory"
+#       dnsChallenge:
+#         provider: simply
