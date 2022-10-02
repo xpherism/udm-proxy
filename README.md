@@ -27,7 +27,7 @@ Follow the steps below to get going
 
 5. Register the container with podman
 
-    `$ podman run -d --systemd=false --network proxy --name proxy -v "/mnt/data/proxy/Caddyfile:/etc/proxy/Caddyfile" xpherism:udm-proxy`
+    `$ podman run -d --systemd=false --network proxy --name proxy -v "/mnt/data/proxy/Caddyfile:/etc/proxy/Caddyfile" xpherism/udm-proxy`
 
 6. Run boot script again and we are done :-)
 
