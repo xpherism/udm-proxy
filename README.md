@@ -17,13 +17,13 @@ Follow the steps below to get going
 2. Customize `on_boot.d/30-proxy.sh` to your needs.
 3. Symlink container proxy boot script
 
-    `$ ln -sf /mnt/data/proxy/on_boot.d/30-proxy.sh /mnt/data/proxy/on_boot.d/.`
+    `$ ln -sf /mnt/data/proxy/on_boot.d/30-proxy.sh /mnt/data/on_boot.d/.`
 
 4. Run boot script (to create/update network and create CNI configuration for container)
 
     `$ /mnt/data/on_boot.d/30-proxy.sh`
 
-    It fail when trying to run the container, but thats okay, its just for setting op needed configuration before initial image run.
+    It will fail when trying to run the container, but thats okay, its just for setting op needed configuration before initial image run.
 
 5. Register the container with podman
 
