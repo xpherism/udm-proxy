@@ -42,7 +42,8 @@ This disabled http->https redirect from unifi controller which is the cause of t
 ## Image
 
 Container image `xpherism/udm-proxy` is caddy built with the following modules
-- proxy protocol (github.com/mastercactapus/caddy2-proxyprotocol)
+- https://github.com/mholt/caddy-l4
+- https://github.com/abiosoft/caddy-json-schema
 
 Feel free to use the vanilla `caddy` docker image or roll your own depending on your needs.
 
@@ -53,7 +54,6 @@ To update container image, simple do
 For more information
 - https://hub.docker.com/_/caddy
 - https://caddyserver.com/docs/caddyfile
-- https://github.com/mastercactapus/caddy2-proxyprotocol
 - https://github.com/boostchicken/udm-utilities
 
 To build your own image, simple fork this repository and change what you need and simple run
