@@ -1,7 +1,8 @@
 FROM caddy:builder-alpine AS builder
 
 RUN xcaddy build \
-    --with github.com/rocketreferrals/caddy-go-proxyproto
+    --with github.com/abiosoft/caddy-json-schema \
+    --with github.com/mholt/caddy-l4
 
 FROM caddy:alpine
 
